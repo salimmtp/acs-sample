@@ -15,7 +15,12 @@ export default StyleSheet.create({
   h3_Medium: {fontFamily: medium, color: colors.white, fontSize: 12},
   h3_Bold: {fontFamily: bold, color: colors.white, fontSize: 12},
   h1_Medium: {fontFamily: medium, color: colors.white, fontSize: 16},
-  h2_Bold: {fontFamily: bold, color: colors.white, fontSize: 14},
+  h2_Bold_grey: {
+    fontFamily: bold,
+    color: colors.greyBright,
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
   h1_Bold_White: {fontFamily: bold, color: colors.white, fontSize: 17},
   p_normal_grey: {
     fontFamily: regular,

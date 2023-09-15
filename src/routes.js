@@ -5,14 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // SCREENS
 import Login from './screens/login';
-
-function DetailsScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={styles.p}>Home Screen Screen</Text>
-    </View>
-  );
-}
+import dashboard from './screens/dashboard';
 
 const Stack = createNativeStackNavigator();
 export const Routes = ({userToken}) => (
@@ -21,7 +14,7 @@ export const Routes = ({userToken}) => (
       initialRouteName="Login"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="Details" component={dashboard} />
     </Stack.Navigator>
   </NavigationContainer>
 );

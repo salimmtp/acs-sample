@@ -36,7 +36,7 @@ export default ({navigation}) => {
           </Text>
 
           <Formik
-            initialValues={{username: 'jon doe', email: 'jondoe@example.com'}}
+            initialValues={{username: 'jon', email: 'jon@gmail.com'}}
             onSubmit={values => {
               setLoading(true);
               setTimeout(() => {
