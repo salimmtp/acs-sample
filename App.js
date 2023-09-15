@@ -10,11 +10,12 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Routes} from './src/routes';
 
 function HomeScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={styles.p}>Home Screen</Text>
+      <Text style={styles.p}>Home Screen s</Text>
       <TouchableOpacity onPress={() => navigation.navigate('Details')}>
         <Text style={styles.p}>Go to Details</Text>
       </TouchableOpacity>
@@ -47,14 +48,7 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Home"
-          screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Details" component={DetailsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Routes userToken={'test'} />
     </SafeAreaView>
   );
 };
