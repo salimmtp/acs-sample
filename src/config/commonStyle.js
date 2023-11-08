@@ -12,6 +12,11 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   h2_Medium: {fontFamily: medium, color: colors.white, fontSize: 14},
+  h2_Bold: {
+    color: colors.greyBright,
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
   h3_Medium: {fontFamily: medium, color: colors.white, fontSize: 12},
   h3_Bold: {fontFamily: bold, color: colors.white, fontSize: 12},
   h1_Medium: {fontFamily: medium, color: colors.white, fontSize: 16},
