@@ -15,6 +15,7 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {AuthContext} from '../../context';
 import axios from 'axios';
+import {useTranslation} from 'react-i18next';
 
 const formValidation = Yup.object().shape({
   username: Yup.string().required(),
@@ -24,6 +25,7 @@ const formValidation = Yup.object().shape({
 export default ({navigation}) => {
   const {signIn, signOut} = {signIn: true, signOut: () => {}};
   const [loading, setLoading] = useState(false);
+  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -32,7 +34,7 @@ export default ({navigation}) => {
         style={styles.container}>
         <View style={styles.componentsCont}>
           <Text style={[commonStyle.h1_Bold, styles.bottomMargin]}>
-            Sign in
+            {t('signin')}
           </Text>
 
           <Formik

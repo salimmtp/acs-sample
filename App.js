@@ -1,7 +1,7 @@
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Routes} from './src/routes';
-
+import i18next from './services/i18next';
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 

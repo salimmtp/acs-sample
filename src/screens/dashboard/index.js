@@ -15,7 +15,7 @@ import {faFolderPlus} from '@fortawesome/free-solid-svg-icons/faFolderPlus';
 import {faFileCirclePlus} from '@fortawesome/free-solid-svg-icons/faFileCirclePlus';
 import {faKey} from '@fortawesome/free-solid-svg-icons/faKey';
 import commonStyle from '../../config/commonStyle';
-
+import {useTranslation} from 'react-i18next';
 const NavItem = ({text, icon}) => (
   <TouchableOpacity style={styles.navItemContainer}>
     <FontAwesomeIcon icon={icon} color={'#FFF'} size={25} />
@@ -30,6 +30,7 @@ const MenuIcon = ({icon}) => (
 );
 
 export default Dashboard = () => {
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -43,7 +44,7 @@ export default Dashboard = () => {
           </View>
           <View>
             <Text style={[commonStyle.h1_Bold, styles.bottomMargin]}>
-              Hello,
+              {t('hello')}
             </Text>
             <Text style={[commonStyle.h2_Bold_grey, styles.bottomMargin2]}>
               What would you like to do today?
