@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // SCREENS
 import Login from './screens/login';
 import dashboard from './screens/dashboard';
+import splash from './screens/splash';
 
 const Stack = createNativeStackNavigator();
 export const Routes = ({userToken}) => (
