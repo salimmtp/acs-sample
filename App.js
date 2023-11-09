@@ -1,12 +1,12 @@
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Routes} from './src/routes';
-import i18next from './services/i18next';
+import i18next from './services/i18next'; // Do not remove this line
+import {colors} from './src/config/theme';
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  // const isDarkMode = useColorScheme() === 'dark'; // detect system theme
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: colors.primary,
     display: 'flex',
     flex: 1,
   };
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <Routes userToken={'test'} />

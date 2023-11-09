@@ -31,8 +31,7 @@
         -->
         <item android:state_enabled="false" android:drawable="@drawable/abc_textfield_default_mtrl_alpha"/>
         <item android:drawable="@drawable/abc_textfield_activated_mtrl_alpha"/>
-        <item android:drawable="@color/primary" />
-<!--        <item android:width="100dp" android:height="100dp" android:drawable="@drawable/icon" android:gravity="center" />-->
+        <item android:drawable="@color/primary" /> <!-- This is additional line added while configuring splash screen -->
     </selector>
 
 </inset>
