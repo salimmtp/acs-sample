@@ -9,7 +9,7 @@ export default StyleSheet.create({
     fontFamily: bold,
     fontWeight: 'bold',
     color: colors.white,
-    fontSize: 20,
+    fontSize: 22,
   },
   h2_Medium: {fontFamily: medium, color: colors.white, fontSize: 14},
   h2_Bold: {
@@ -41,13 +41,13 @@ export default StyleSheet.create({
   p_regular: {
     fontFamily: regular,
     color: colors.white,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   p_regular_grey: {
     fontFamily: regular,
     color: colors.grey,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   p_small: {

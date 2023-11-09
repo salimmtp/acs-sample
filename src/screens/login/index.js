@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   Text,
+  Image,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
@@ -18,8 +19,8 @@ import axios from 'axios';
 import {useTranslation} from 'react-i18next';
 
 const formValidation = Yup.object().shape({
-  username: Yup.string().required(),
   email: Yup.string().email().required(),
+  password: Yup.string().required(),
 });
 
 export default ({navigation}) => {
@@ -33,12 +34,26 @@ export default ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <View style={styles.componentsCont}>
-          <Text style={[commonStyle.h1_Bold, styles.bottomMargin]}>
-            {t('signin')}
-          </Text>
+          <View style={{marginBottom: 30}}>
+            <View
+              style={{
+                marginBottom: 10,
+                height: 35,
+                width: 35,
+              }}>
+              <Image
+                source={require('../../../assets/img/logo.png')}
+                style={commonStyle.imgC}
+              />
+            </View>
+
+            <Text style={[commonStyle.h1_Bold, styles.bottomMargin]}>
+              {t('signin')}
+            </Text>
+          </View>
 
           <Formik
-            initialValues={{username: 'jon', email: 'jon@gmail.com'}}
+            initialValues={{email: '', password: ''}}
             onSubmit={values => {
               setLoading(true);
               setTimeout(() => {
@@ -57,39 +72,31 @@ export default ({navigation}) => {
               handleSubmit,
             }) => (
               <Fragment>
-                <Text style={[commonStyle.p_regular, styles.pMargin]}>
-                  Username
-                </Text>
-                <InputText
-                  value={values.username}
-                  placeholder="Insert your username"
-                  onChangeText={handleChange('username')}
-                  errorFlag={errors.username && touched.username}
-                  errorText={errors.username}
-                  keyboardType="default"
-                  style={styles.passwordExtra}
-                />
-                <Text style={[commonStyle.p_regular, styles.pMargin]}>
-                  Email address
-                </Text>
                 <InputText
                   value={values.email}
-                  placeholder="Insert your email"
+                  placeholder={t('emailAddress')}
                   onChangeText={handleChange('email')}
                   errorFlag={errors.email && touched.email}
                   errorText={errors.email}
                   keyboardType="email-address"
-                  style={styles.passwordExtra}
                 />
-                <TouchableOpacity onPress={() => {}}>
+                <InputText
+                  value={values.password}
+                  placeholder={t('password')}
+                  onChangeText={handleChange('password')}
+                  errorFlag={errors.password && touched.password}
+                  errorText={errors.password}
+                  secured
+                />
+                <TouchableOpacity style={{marginTop: 30}} onPress={() => {}}>
                   <Text style={[commonStyle.p_regular, styles.pMargin]}>
-                    Forgotten your password?
+                    {t('forgot')}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {}}>
                   <Text
                     style={[commonStyle.p_regular_grey, styles.pMarginLast]}>
-                    Register for an account
+                    {t('register')}
                   </Text>
                 </TouchableOpacity>
                 <BtnPrimary
@@ -98,7 +105,7 @@ export default ({navigation}) => {
                   }}
                   loading={loading}
                   style={styles.bottomMargin}
-                  title="Login"
+                  title={t('login')}
                 />
               </Fragment>
             )}
@@ -111,7 +118,6 @@ export default ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: colors.primary},
-
   componentsCont: {
     paddingHorizontal: horizontalPadding,
     flex: 1,
@@ -120,6 +126,4 @@ const styles = StyleSheet.create({
   bottomMargin: {marginBottom: 16},
   pMargin: {marginBottom: 10},
   pMarginLast: {marginBottom: 20},
-  passwordExtra: {marginBottom: 18},
-  centerAlign: {alignItems: 'flex-end', marginBottom: 10},
 });

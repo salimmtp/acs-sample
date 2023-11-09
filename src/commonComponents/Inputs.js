@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     backgroundColor: colors.greyBlue,
   },
-  containerMargin: {marginBottom: 10},
+  containerMargin: {marginBottom: 15},
   alertRed: {borderColor: 'red'},
   alertTxtRed: {color: 'red'},
   greyBack: {backgroundColor: 'rgba(166,166,166,0.2)'},
