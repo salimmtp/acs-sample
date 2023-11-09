@@ -2,6 +2,7 @@
   "signin": "SIGN IN",
   "emailAddress": "Email address",
   "password": "password",
+  "remember": "Remember me",
   "forgot": "Forgotten your password?",
   "register": "Register for an account",
   "login": "Login",

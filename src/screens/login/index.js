@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import {BtnPrimary} from '../../commonComponents/Button.js';
-import {InputText, InputTextMobile} from '../../commonComponents/Inputs';
+import {InputText} from '../../commonComponents/Inputs';
 import commonStyle from '../../config/commonStyle';
 import {colors, horizontalPadding} from '../../config/theme';
 import {API_BASE_URL} from '../../config';
@@ -17,6 +17,8 @@ import * as Yup from 'yup';
 import {AuthContext} from '../../context';
 import axios from 'axios';
 import {useTranslation} from 'react-i18next';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
 
 const formValidation = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -26,6 +28,7 @@ const formValidation = Yup.object().shape({
 export default ({navigation}) => {
   const {signIn, signOut} = {signIn: true, signOut: () => {}};
   const [loading, setLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const {t} = useTranslation();
 
   return (
@@ -34,13 +37,8 @@ export default ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <View style={styles.componentsCont}>
-          <View style={{marginBottom: 30}}>
-            <View
-              style={{
-                marginBottom: 10,
-                height: 35,
-                width: 35,
-              }}>
+          <View style={styles.iconCont}>
+            <View style={styles.icon}>
               <Image
                 source={require('../../../assets/img/logo.png')}
                 style={commonStyle.imgC}
@@ -88,7 +86,23 @@ export default ({navigation}) => {
                   errorText={errors.password}
                   secured
                 />
-                <TouchableOpacity style={{marginTop: 30}} onPress={() => {}}>
+                <TouchableOpacity
+                  style={styles.checkboxCont}
+                  onPress={() => setRememberMe(!rememberMe)}>
+                  <View style={styles.checkbox}>
+                    {rememberMe ? (
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        color={colors.blue}
+                        size={11}
+                      />
+                    ) : null}
+                  </View>
+                  <Text style={[commonStyle.p_regular, {marginLeft: 8}]}>
+                    {t('remember')}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
                   <Text style={[commonStyle.p_regular, styles.pMargin]}>
                     {t('forgot')}
                   </Text>
@@ -126,4 +140,29 @@ const styles = StyleSheet.create({
   bottomMargin: {marginBottom: 16},
   pMargin: {marginBottom: 10},
   pMarginLast: {marginBottom: 20},
+  // Icon
+  iconCont: {marginBottom: 30},
+  icon: {
+    marginBottom: 10,
+    height: 35,
+    width: 35,
+  },
+  // checkbox
+  checkboxCont: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 45,
+  },
+  checkbox: [
+    {
+      borderRadius: 7,
+      height: 20,
+      width: 20,
+      borderWidth: 1,
+      borderColor: colors.lightBlue,
+      backgroundColor: colors.greyBlue,
+    },
+    commonStyle.center,
+  ],
 });

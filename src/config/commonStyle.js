@@ -4,6 +4,13 @@ import {color} from 'react-native-reanimated';
 import {colors, regular, medium, bold} from './theme';
 
 export default StyleSheet.create({
+  /*-----------------------------style-----------------------------*/
+  center: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   /*------------------------Typography----------------------------*/
   h1_Bold: {
     fontFamily: bold,
