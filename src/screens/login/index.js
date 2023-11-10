@@ -26,7 +26,7 @@ const formValidation = Yup.object().shape({
 });
 
 export default ({navigation}) => {
-  const {signIn, signOut} = {signIn: true, signOut: () => {}};
+  const {signIn, signOut} = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const {t} = useTranslation();
@@ -51,12 +51,13 @@ export default ({navigation}) => {
           </View>
 
           <Formik
-            initialValues={{email: '', password: ''}}
+            initialValues={{email: 'jon@gmail.com', password: 'password@1234'}}
             onSubmit={values => {
               setLoading(true);
               setTimeout(() => {
-                navigation.navigate('Details');
+                // navigation.navigate('Home');
                 setLoading(false);
+                signIn('token');
               }, 500);
             }}
             validationSchema={formValidation}>

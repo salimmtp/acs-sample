@@ -1,9 +1,35 @@
+import {useState, useMemo} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Routes} from './src/routes';
 import i18next from './services/i18next'; // Do not remove this line
 import {colors} from './src/config/theme';
+import {AuthContext} from './src/context';
+import {
+  getAccessToken,
+  setAccessToken,
+  removeAccessToken,
+} from './src/config/AccessToken';
+
 const App = () => {
   // const isDarkMode = useColorScheme() === 'dark'; // detect system theme
+  const [isLoading, setLoading] = useState(true);
+  const [userToken, setUserToken] = useState(false);
+
+  const authContext = useMemo(() => {
+    return {
+      signIn: token => {
+        // setLoading(false);
+        setUserToken(token);
+        // setAccessToken(token);
+      },
+      signOut: () => {
+        // setLoading(false);
+        setUserToken(null);
+        // removeAccessToken();
+      },
+      token: userToken,
+    };
+  });
 
   const backgroundStyle = {
     backgroundColor: colors.primary,
@@ -17,7 +43,9 @@ const App = () => {
         barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <Routes userToken={'test'} />
+      <AuthContext.Provider value={authContext}>
+        <Routes userToken={userToken} />
+      </AuthContext.Provider>
     </SafeAreaView>
   );
 };
