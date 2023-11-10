@@ -9,6 +9,7 @@ import {
   setAccessToken,
   removeAccessToken,
 } from './src/config/AccessToken';
+import {PageLoader} from './src/commonComponents/Loader';
 
 const App = () => {
   // const isDarkMode = useColorScheme() === 'dark'; // detect system theme
@@ -36,6 +37,10 @@ const App = () => {
     display: 'flex',
     flex: 1,
   };
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
