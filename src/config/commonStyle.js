@@ -5,12 +5,18 @@ import {colors, regular, medium, bold} from './theme';
 
 export default StyleSheet.create({
   /*-----------------------------style-----------------------------*/
+  flex: {display: 'flex', flex: 1},
   center: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  centerFull: {
+    display: 'flex',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   /*------------------------Typography----------------------------*/
   h1_Bold: {
     fontFamily: bold,

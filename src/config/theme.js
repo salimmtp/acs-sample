@@ -19,5 +19,5 @@ export const medium = 'Roboto-Medium';
 export const bold = 'Roboto-Bold';
 
 /* -------------- common measure configs ---------------- */
-export const horizontalPadding = 20;
+export const horizontalPadding = 15;
 export const horizontalPaddingBorder = 13;

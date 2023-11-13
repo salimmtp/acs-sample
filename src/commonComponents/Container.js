@@ -1,5 +1,5 @@
 const {View, StyleSheet} = require('react-native');
-const {colors} = require('../config/theme');
+const {colors, horizontalPadding} = require('../config/theme');
 
 export default Container = ({children}) => (
   <View style={style.conainer}>{children}</View>
@@ -10,6 +10,6 @@ const style = StyleSheet.create({
     display: 'flex',
     flex: 1,
     backgroundColor: colors.primary,
-    paddingHorizontal: 15,
+    paddingHorizontal: horizontalPadding,
   },
 });

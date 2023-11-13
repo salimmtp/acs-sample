@@ -54,10 +54,9 @@ const App = () => {
         barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <Home />
-      {/* <AuthContext.Provider value={authContext}>
+      <AuthContext.Provider value={authContext}>
         <Routes userToken={userToken} />
-      </AuthContext.Provider> */}
+      </AuthContext.Provider>
     </SafeAreaView>
   );
 };

@@ -8,12 +8,13 @@ import {faHome} from '@fortawesome/free-solid-svg-icons/faHome';
 import {faSliders} from '@fortawesome/free-solid-svg-icons/faSliders';
 import {faMessage} from '@fortawesome/free-regular-svg-icons/faMessage';
 import {faUser} from '@fortawesome/free-regular-svg-icons/faUser';
+import commonStyle from './config/commonStyle';
+import {colors} from './config/theme';
 
 // SCREENS
 import Login from './screens/login';
 import dashboard from './screens/dashboard';
-import commonStyle from './config/commonStyle';
-import {colors} from './config/theme';
+import Home from './screens/home';
 
 const Base = ({text}) => (
   <View
@@ -25,7 +26,7 @@ const Base = ({text}) => (
   </View>
 );
 
-const One = () => <Base text="home" />;
+const One = () => <Home />;
 const Two = () => <Base text="Profile" />;
 const Three = () => <Base text="Settings" />;
 const Four = () => <Base text="Contact" />;
