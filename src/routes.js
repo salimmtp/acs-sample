@@ -44,7 +44,7 @@ const TabStack = () => (
       },
     }}>
     <Tab.Screen
-      name="Home"
+      name="HomeTab"
       component={One}
       options={{
         tabBarLabel: 'Home',

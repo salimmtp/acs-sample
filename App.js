@@ -1,4 +1,4 @@
-import {useState, useMemo} from 'react';
+import {useState, useMemo, useEffect} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Routes} from './src/routes';
 import i18next from './services/i18next'; // Do not remove this line
@@ -10,6 +10,8 @@ import {
   removeAccessToken,
 } from './src/config/AccessToken';
 import {PageLoader} from './src/commonComponents/Loader';
+
+import Home from './src/screens/home';
 
 const App = () => {
   // const isDarkMode = useColorScheme() === 'dark'; // detect system theme
@@ -38,6 +40,10 @@ const App = () => {
     flex: 1,
   };
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   if (isLoading) {
     return <PageLoader />;
   }
@@ -48,9 +54,10 @@ const App = () => {
         barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <AuthContext.Provider value={authContext}>
+      <Home />
+      {/* <AuthContext.Provider value={authContext}>
         <Routes userToken={userToken} />
-      </AuthContext.Provider>
+      </AuthContext.Provider> */}
     </SafeAreaView>
   );
 };
