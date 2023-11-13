@@ -13,7 +13,7 @@ export default Home = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.settingIconContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Otp')}
+          onPress={() => alert('Settings button pressed!')}
           style={styles.settingIcon}>
           <Image
             style={commonStyle.imgC}

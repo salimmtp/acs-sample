@@ -16,6 +16,8 @@ import Login from './screens/login';
 import dashboard from './screens/dashboard';
 import Home from './screens/home';
 import OTP from './screens/otp';
+import DownloadKey from './screens/downloadKey';
+import Downloading from './screens/downloadKey/Downloading';
 
 const Base = ({text}) => (
   <View
@@ -93,6 +95,8 @@ export const Routes = ({userToken}) => (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {userToken ? (
         <>
+          <Stack.Screen name="DownloadKey" component={DownloadKey} />
+          <Stack.Screen name="Downloading" component={Downloading} />
           <Stack.Screen name="TabHome" component={TabStack} />
           <Stack.Screen name="Otp" component={OTP} />
         </>

@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Container from '../../commonComponents/Container';
 import commonStyle from '../../config/commonStyle';
 import {colors} from '../../config/theme';
@@ -13,7 +13,7 @@ import {useTranslation} from 'react-i18next';
 import Header from '../../commonComponents/Header';
 import {BtnPrimary} from '../../commonComponents/Button';
 
-export default function OTP() {
+export default function OTP({navigation}) {
   const [loading, setLoading] = useState(false);
   const [errorFlag, setErrorFlag] = useState(false);
   const ref_input1 = useRef();
@@ -87,7 +87,7 @@ export default function OTP() {
             onChangeText={e => {
               otpDigitFunc(e, `value2`, values, ref_input1, ref_input3);
             }}
-            autoFocus={true}
+            // autoFocus={true}
             keyboardType="numeric"
             returnKeyType="next"
             onSubmitEditing={() => ref_input3.current.focus()}
@@ -99,7 +99,7 @@ export default function OTP() {
             onChangeText={e => {
               otpDigitFunc(e, `value3`, values, ref_input2, ref_input4);
             }}
-            autoFocus={true}
+            // autoFocus={true}
             keyboardType="numeric"
             returnKeyType="next"
             onSubmitEditing={() => ref_input4.current.focus()}
@@ -111,7 +111,7 @@ export default function OTP() {
             onChangeText={e => {
               otpDigitFunc(e, `value4`, values, ref_input3, ref_input5);
             }}
-            autoFocus={true}
+            // autoFocus={true}
             keyboardType="numeric"
             returnKeyType="next"
             onSubmitEditing={() => ref_input5.current.focus()}
@@ -123,7 +123,7 @@ export default function OTP() {
             onChangeText={e => {
               otpDigitFunc(e, `value5`, values, ref_input4, ref_input6);
             }}
-            autoFocus={true}
+            // autoFocus={true}
             keyboardType="numeric"
             returnKeyType="next"
             onSubmitEditing={() => ref_input6.current.focus()}
@@ -135,7 +135,7 @@ export default function OTP() {
             onChangeText={e => {
               otpDigitFunc(e, `value6`, values, ref_input5, ref_input6);
             }}
-            autoFocus={true}
+            // autoFocus={true}
             keyboardType="numeric"
             returnKeyType="next"
             // onSubmitEditing={() => ref_input2.current.focus()}
@@ -165,7 +165,7 @@ export default function OTP() {
       </TouchableOpacity>
       <BtnPrimary
         onPress={() => {
-          handleSubmit();
+          navigation.navigate('TabHome');
         }}
         loading={loading}
         style={styles.bottomMargin}
