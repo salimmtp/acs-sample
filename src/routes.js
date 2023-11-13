@@ -15,6 +15,7 @@ import {colors} from './config/theme';
 import Login from './screens/login';
 import dashboard from './screens/dashboard';
 import Home from './screens/home';
+import OTP from './screens/otp';
 
 const Base = ({text}) => (
   <View
@@ -26,7 +27,6 @@ const Base = ({text}) => (
   </View>
 );
 
-const One = () => <Home />;
 const Two = () => <Base text="Profile" />;
 const Three = () => <Base text="Settings" />;
 const Four = () => <Base text="Contact" />;
@@ -46,7 +46,7 @@ const TabStack = () => (
     }}>
     <Tab.Screen
       name="HomeTab"
-      component={One}
+      component={Home}
       options={{
         tabBarLabel: 'Home',
         tabBarIcon: ({color, size}) => (
@@ -92,7 +92,10 @@ export const Routes = ({userToken}) => (
   <NavigationContainer>
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {userToken ? (
-        <Stack.Screen name="TabHome" component={TabStack} />
+        <>
+          <Stack.Screen name="TabHome" component={TabStack} />
+          <Stack.Screen name="Otp" component={OTP} />
+        </>
       ) : (
         <>
           <Stack.Screen name="Login" component={Login} />

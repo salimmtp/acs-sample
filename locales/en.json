@@ -6,5 +6,12 @@
   "forgot": "Forgotten your password?",
   "register": "Register for an account",
   "login": "Login",
-  "hello": "Hello"
+  "hello": "Hello",
+  "OTPpage": "---------------------------- OTP page --------------------------",
+  "otpHeadingline1": "YOUR SMART CREDENTIAL",
+  "otpHeadingline2": "HAS BEEN DOWNLOADED",
+  "downloadedTxt": "An email has been sent to your registered email address with a one-time use passcode. The passcode is valid for 30 minutes",
+  "noMail": "Haven’t received an email?",
+  "resendMail": "Resend email",
+  "connect": "Connect"
 }

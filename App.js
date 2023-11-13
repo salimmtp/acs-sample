@@ -11,7 +11,7 @@ import {
 } from './src/config/AccessToken';
 import {PageLoader} from './src/commonComponents/Loader';
 
-import Home from './src/screens/home';
+console.disableYellowBox = true;
 
 const App = () => {
   // const isDarkMode = useColorScheme() === 'dark'; // detect system theme
@@ -54,6 +54,8 @@ const App = () => {
         barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      {/* <OTP /> */}
+      {/* <Login /> */}
       <AuthContext.Provider value={authContext}>
         <Routes userToken={userToken} />
       </AuthContext.Provider>

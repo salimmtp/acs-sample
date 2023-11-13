@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
-import CommonStyles from '../config/commonStyle';
+import commonStyles from '../config/commonStyle';
 import {colors} from '../config/theme';
 export const InputText = ({
   style,
@@ -36,7 +36,7 @@ export const InputText = ({
       editable={editable}
     />
     {errorFlag && (
-      <Text style={[CommonStyles.p_normal_grey, styles.alertTxtRed]}>
+      <Text style={[commonStyles.p_normal_grey, styles.alertTxtRed]}>
         {errorText}
       </Text>
     )}

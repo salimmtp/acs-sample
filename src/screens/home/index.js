@@ -6,14 +6,14 @@ import SwiperComponent from './SwiperComponent.js';
 import Dots from './Dots';
 import commonStyle from '../../config/commonStyle';
 
-export default Home = () => {
+export default Home = ({navigation}) => {
   const [isActive, setActive] = useState(0);
   const swiper = useRef(null);
   return (
     <View style={styles.container}>
       <View style={styles.settingIconContainer}>
         <TouchableOpacity
-          onPress={() => alert('settings')}
+          onPress={() => navigation.navigate('Otp')}
           style={styles.settingIcon}>
           <Image
             style={commonStyle.imgC}
