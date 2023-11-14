@@ -18,6 +18,7 @@ import Home from './screens/home';
 import OTP from './screens/otp';
 import DownloadKey from './screens/downloadKey';
 import Downloading from './screens/downloadKey/Downloading';
+import EventLog from './screens/eventLog';
 
 const Base = ({text}) => (
   <View
@@ -30,7 +31,7 @@ const Base = ({text}) => (
 );
 
 const Two = () => <Base text="Profile" />;
-const Three = () => <Base text="Settings" />;
+// const Three = () => <Base text="Settings" />;
 const Four = () => <Base text="Contact" />;
 
 const Tab = createBottomTabNavigator();
@@ -68,7 +69,7 @@ const TabStack = () => (
     />
     <Tab.Screen
       name="Settings"
-      component={Three}
+      component={EventLog}
       options={{
         tabBarLabel: 'Settings',
         tabBarIcon: ({color, size}) => (

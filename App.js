@@ -54,7 +54,6 @@ const App = () => {
         barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-
       <AuthContext.Provider value={authContext}>
         <Routes userToken={userToken} />
       </AuthContext.Provider>
