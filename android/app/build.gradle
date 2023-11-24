@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.acs"
+    namespace "com.cameacs.credentialapp"
     defaultConfig {
-        applicationId "com.acs"
+        applicationId "com.cameacs.credentialapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

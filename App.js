@@ -1,5 +1,5 @@
 import {useState, useMemo, useEffect} from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {Linking, SafeAreaView, StatusBar, Alert} from 'react-native';
 import {Routes} from './src/routes';
 import i18next from './services/i18next'; // Do not remove this line
 import {colors} from './src/config/theme';
@@ -42,6 +42,32 @@ const App = () => {
 
   useEffect(() => {
     setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const getUrl = async () => {
+      const initialUrl = await Linking.getInitialURL();
+
+      if (initialUrl !== null) {
+        Alert.alert('first opening' + initialUrl);
+        return;
+      }
+
+      // Alert.alert('second opening' + initialUrl);
+    };
+    getUrl();
+  }, []);
+
+  useEffect(() => {
+    Linking.addEventListener('url', ({url}) => {
+      Alert.alert('subscription' + url);
+    });
+
+    return () => {
+      Linking.removeEventListener('url', ({url}) => {
+        Alert.alert('unsubscribe' + url);
+      });
+    };
   }, []);
 
   if (isLoading) {

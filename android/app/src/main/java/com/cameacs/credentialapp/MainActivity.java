@@ -1,4 +1,4 @@
-package com.acs;
+package com.cameacs.credentialapp;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
