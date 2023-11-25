@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import commonStyle from '../config/commonStyle';
-import {colors} from '../config/theme';
+import {borderRadius, colors} from '../config/theme';
 import {horizontalPadding, regular} from '../config/theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons/faChevronRight';
@@ -34,6 +34,16 @@ export const BtnPrimary = ({onPress, title, style = {}, loading = false}) => (
   </TouchableOpacity>
 );
 
+export const BtnSmall = ({style = {}, text, onPress}) => {
+  return (
+    <TouchableOpacity
+      style={[styles.smallBtnContainer, style]}
+      onPress={onPress}>
+      <Text style={[commonStyle.h2_Bold, {color: colors.white}]}>{text}</Text>
+    </TouchableOpacity>
+  );
+};
+
 const styles = StyleSheet.create({
   blueBtn: {
     width: '100%',
@@ -45,5 +55,12 @@ const styles = StyleSheet.create({
   },
   txtColor: {
     color: '#fff',
+  },
+  smallBtnContainer: {
+    borderRadius,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    backgroundColor: colors.blue,
+    alignSelf: 'center',
   },
 });

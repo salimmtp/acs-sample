@@ -5,10 +5,14 @@ import Swiper from 'react-native-swiper';
 import SwiperComponent from './SwiperComponent.js';
 import Dots from './Dots';
 import commonStyle from '../../config/commonStyle';
+import Modal from '../../commonComponents/Modal';
+import {useTranslation} from 'react-i18next';
 
 export default Home = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(true);
   const [isActive, setActive] = useState(0);
   const swiper = useRef(null);
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.settingIconContainer}>
@@ -54,6 +58,9 @@ export default Home = ({navigation}) => {
           </Text>
         </TouchableOpacity>
       </View>
+      <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
+        <Text style={commonStyle.p_Regular_black}>{t('smartDwnlded')}</Text>
+      </Modal>
     </View>
   );
 };

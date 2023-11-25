@@ -46,8 +46,7 @@ export default ({modalVisible, setModalVisible, children}) => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    backgroundColor: '#355e83',
-    opacity: 0.8,
+    backgroundColor: 'rgba(53,94,131,0.8)',
     paddingTop: 130,
     alignItems: 'center',
     paddingHorizontal: horizontalPadding,
