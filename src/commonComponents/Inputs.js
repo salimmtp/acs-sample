@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
 import commonStyles from '../config/commonStyle';
-import {colors} from '../config/theme';
+import {colors, borderRadius} from '../config/theme';
 export const InputText = ({
   style,
   value,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: colors.white,
     borderColor: colors.lightBlue,
-    borderRadius: 10,
+    borderRadius,
     textAlignVertical: 'center',
     backgroundColor: colors.greyBlue,
   },
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#E5E5E5',
-    borderRadius: 10,
+    borderRadius,
   },
   center: {justifyContent: 'center'},
   nineOne: {color: '#B3B3B3', marginLeft: 10},

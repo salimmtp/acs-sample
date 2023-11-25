@@ -8,7 +8,7 @@ import {
 import {useEffect, useRef, useState} from 'react';
 import Container from '../../commonComponents/Container';
 import commonStyle from '../../config/commonStyle';
-import {colors} from '../../config/theme';
+import {colors, borderRadius} from '../../config/theme';
 import {useTranslation} from 'react-i18next';
 import Header from '../../commonComponents/Header';
 import {BtnPrimary} from '../../commonComponents/Button';
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: colors.white,
     borderColor: colors.lightBlue,
-    borderRadius: 10,
+    borderRadius,
     textAlignVertical: 'center',
     backgroundColor: colors.greyBlue,
   },

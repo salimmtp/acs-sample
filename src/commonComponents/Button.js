@@ -25,6 +25,7 @@ export const BtnPrimary = ({onPress, title, style = {}, loading = false}) => (
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingHorizontal: 20,
+          alignItems: 'center',
         }}>
         <Text style={[commonStyle.h2_Bold, styles.txtColor]}>{title}</Text>
         <FontAwesomeIcon icon={faChevronRight} color={'#FFF'} size={18} />

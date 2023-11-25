@@ -6,7 +6,7 @@ import {
   Platform,
   StatusBar,
 } from 'react-native';
-import {colors} from '../config/theme';
+import {colors, borderRadius} from '../config/theme';
 
 export const PageLoader = () => (
   <>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   loaderWrp: {
     width: 70,
     height: 70,
-    borderRadius: 10,
+    borderRadius,
     backgroundColor: colors.white,
     justifyContent: 'center',
     alignItems: 'center',

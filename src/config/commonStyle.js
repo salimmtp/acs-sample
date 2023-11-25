@@ -30,6 +30,11 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
+  p_Regular_black: {
+    color: colors.black,
+    fontWeight: 'normal',
+    fontSize: 18,
+  },
   h3_Medium: {fontFamily: medium, color: colors.white, fontSize: 12},
   h3_Bold: {fontFamily: bold, color: colors.white, fontSize: 12},
   h1_Medium: {fontFamily: medium, color: colors.white, fontSize: 16},

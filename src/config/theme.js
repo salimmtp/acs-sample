@@ -6,7 +6,7 @@ export const colors = {
   primary: '#233647', //'#0D1724'
   greyBlue: '#2b3e4f',
   lightBlue: '#445d7c',
-  blue: '#0093d9',
+  blue: '#00B0ED',
   grey: '#a8b9bc',
   greyBright: '#a9b9bd',
 };
@@ -21,3 +21,4 @@ export const bold = 'Roboto-Bold';
 /* -------------- common measure configs ---------------- */
 export const horizontalPadding = 15;
 export const horizontalPaddingBorder = 13;
+export const borderRadius = 10;

@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {colors} from '../../config/theme';
+import {colors, borderRadius} from '../../config/theme';
 import Swiper from 'react-native-swiper';
 import SwiperComponent from './SwiperComponent.js';
 import Dots from './Dots';
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7FA0B7',
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 10,
+    borderRadius,
     alignSelf: 'center',
   },
 });

@@ -6,11 +6,12 @@ import {
   Image,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Pressable,
 } from 'react-native';
 import {BtnPrimary} from '../../commonComponents/Button.js';
 import {InputText} from '../../commonComponents/Inputs';
 import commonStyle from '../../config/commonStyle';
-import {colors, horizontalPadding} from '../../config/theme';
+import {colors, horizontalPadding, borderRadius} from '../../config/theme';
 import {API_BASE_URL} from '../../config';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -19,6 +20,7 @@ import axios from 'axios';
 import {useTranslation} from 'react-i18next';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
+import Modal from '../../commonComponents/Modal.js';
 
 const formValidation = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -30,6 +32,7 @@ export default ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const {t} = useTranslation();
+  const [modalVisible, setModalVisible] = useState(true);
 
   return (
     <View style={styles.container}>
@@ -126,6 +129,16 @@ export default ({navigation}) => {
             )}
           </Formik>
         </View>
+        <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
+          <Text style={commonStyle.p_Regular_black}>
+            Your smart credential has been downloaded successfully
+          </Text>
+        </Modal>
+        <Pressable
+          style={[styles.button, styles.buttonOpen]}
+          onPress={() => setModalVisible(true)}>
+          <Text style={styles.textStyle}>Show Modal</Text>
+        </Pressable>
       </KeyboardAvoidingView>
     </View>
   );
