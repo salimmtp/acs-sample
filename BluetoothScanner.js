@@ -7,6 +7,8 @@ import {
   PermissionsAndroid,
   Platform,
   TouchableOpacity,
+  Alert,
+  TextInput,
 } from 'react-native';
 import {BleManager} from 'react-native-ble-plx';
 import {request, PERMISSIONS} from 'react-native-permissions';
@@ -28,6 +30,11 @@ const BluetoothScanner = () => {
     billsPC,
     exchangePokemon,
   } = useBLE();
+
+  useEffect(() => {
+    if (connectDevice.length)
+      console.log('connected device', JSON.stringify(connectDevice));
+  }, [connectedDevices]);
 
   // useEffect(() => {
   //   console.log('it worked!');
@@ -173,7 +180,16 @@ const BluetoothScanner = () => {
     return new Promise((resolve, reject) => {
       device.services().then(services => {
         const characteristics = [];
-        console.log('ashu_1', services);
+        console.log('services', services);
+        let newSe = [];
+        services.forEach((service, i) => {
+          service.characteristics().then(c => {
+            newSe.push(c);
+          });
+        });
+
+        console.log(JSON.stringify(newSe));
+
         services.forEach((service, i) => {
           service.characteristics().then(c => {
             console.log('service.characteristics');
@@ -194,6 +210,7 @@ const BluetoothScanner = () => {
             }
           });
         });
+        console.log(JSON.stringify({characteristics}));
       });
     });
   };
@@ -269,47 +286,137 @@ const BluetoothScanner = () => {
     }
   };
 
+  const [text, onChangeText] = useState('Sample');
+
+  const writeSample = async id => {
+    try {
+      console.log({text});
+      manager
+        .isDeviceConnected(id)
+        .then(async bool => {
+          // const valueToWrite = new Uint8Array([0x01]); // Send value 0x01 to flash the green LED identify sequence
+
+          const stringValue = 'test sample string';
+          const valueToWrite = btoa(stringValue);
+          // btoa(valueToWrite),
+
+          console.log(
+            id,
+            '6e400001-b5a3-f393-e0a9-e50e24dcca9e', //'04b30000-6f01-4987-bf0e-f8aecc7b42a8',
+            '6e400002-b5a3-f393-e0a9-e50e24dcca9e', //'df3f799f-c6df-46e4-b17c-6109d4b052f7',
+            valueToWrite,
+          );
+          await manager.writeCharacteristicWithResponseForDevice(
+            id,
+            '6e400001-b5a3-f393-e0a9-e50e24dcca9e', //'04b30000-6f01-4987-bf0e-f8aecc7b42a8',
+            '6e400002-b5a3-f393-e0a9-e50e24dcca9e', //'df3f799f-c6df-46e4-b17c-6109d4b052f7',
+            btoa(text), //btoa(valueToWrite),
+          );
+        })
+        .catch(e => {
+          console.log({e});
+        });
+    } catch (e) {
+      console.log({e});
+    }
+  };
+
+  const turnLight = async id => {
+    try {
+      manager.isDeviceConnected(id).then(async bool => {
+        const valueToWrite = new Uint8Array([0x01]); // Send value 0x01 to flash the green LED identify sequence
+        await manager.writeCharacteristicWithResponseForDevice(
+          id,
+          '04b30000-6f01-4987-bf0e-f8aecc7b42a8',
+          'df3f799f-c6df-46e4-b17c-6109d4b052f7',
+          btoa(valueToWrite),
+        );
+      });
+    } catch (e) {
+      console.log({e});
+    }
+  };
+
   const renderItem = ({item}) => (
     <View
       style={{
         display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1,
       }}>
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <View>
+          <Text>{item.name || 'Unknown Device'}</Text>
+          <Text>{item.id}</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            connectDevice(item);
+          }}>
+          <Text>connect</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            // console.log(item.id, {dsadsa: connectedDevices[0].cancelConnection});
+
+            manager
+              .isDeviceConnected(item.id)
+              .then(bool => console.log(' Manager Connected', bool));
+            // connectedDevices[0].cancelConnection();
+            // await manager.cancelDeviceConnection(item.id);
+          }}>
+          <Text>connected?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            // console.log(item.id, {dsadsa: connectedDevices[0].cancelConnection});
+            onButtonPress();
+            //
+            // manager
+            //   .isDeviceConnected(item.id)
+            //   .then(bool => console.log(' Manager Connected', bool));
+            // connectedDevices[0].cancelConnection();
+            // await manager.cancelDeviceConnection(item.id);
+          }}>
+          <Text>Transfer</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            // console.log(item.id, {dsadsa: connectedDevices[0].cancelConnection});
+
+            // manager
+            //   .isDeviceConnected(item.id)
+            //   .then(bool => console.log(' Manager Connected', bool));
+            // connectedDevices[0].cancelConnection();
+            console.log(item.id);
+            await manager.cancelDeviceConnection(item.id);
+          }}>
+          <Text>cancel</Text>
+        </TouchableOpacity>
+      </View>
+
       <View>
-        <Text>{item.name || 'Unknown Device'}</Text>
-        <Text>{item.id}</Text>
+        <TextInput
+          style={{
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+          }}
+          onChangeText={onChangeText}
+          value={text}
+        />
       </View>
       <TouchableOpacity
+        style={{margin: 12, borderWidth: 1, padding: 10}}
         onPress={() => {
-          connectDevice(item);
+          writeSample(item.id);
         }}>
-        <Text>connect</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={async () => {
-          // console.log(item.id, {dsadsa: connectedDevices[0].cancelConnection});
-
-          manager
-            .isDeviceConnected(item.id)
-            .then(bool => console.log(' Manager Connected', bool));
-          // connectedDevices[0].cancelConnection();
-          // await manager.cancelDeviceConnection(item.id);
-        }}>
-        <Text>connected?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={async () => {
-          // console.log(item.id, {dsadsa: connectedDevices[0].cancelConnection});
-
-          // manager
-          //   .isDeviceConnected(item.id)
-          //   .then(bool => console.log(' Manager Connected', bool));
-          // connectedDevices[0].cancelConnection();
-          console.log(item.id);
-          await manager.cancelDeviceConnection(item.id);
-        }}>
-        <Text>cancel</Text>
+        <Text style={{color: 'black', alignSelf: 'center'}}>Send</Text>
       </TouchableOpacity>
     </View>
   );
@@ -320,14 +427,9 @@ const BluetoothScanner = () => {
         title={scanning ? 'Stop Scan' : 'Start Scan'}
         onPress={scanning ? stopScanBLE : startScanBLE}
       />
-      <FlatList
-        data={devices}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-      />
 
       <FlatList
-        data={connectedDevices}
+        data={connectedDevices.length ? connectedDevices : devices}
         keyExtractor={item => item.id}
         renderItem={renderItem}
       />
